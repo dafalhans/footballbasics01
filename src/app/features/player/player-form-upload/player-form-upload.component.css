@@ -1,0 +1,20 @@
+.image-upload-container {
+  display: flex;
+  align-items: center;
+}
+
+.image-container, .file-upload-container {
+  flex: 1;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.avatar {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  border-radius: 50%; /* This creates the circular shape */
+  object-fit: cover; /* Ensures the image covers the entire area */
+}

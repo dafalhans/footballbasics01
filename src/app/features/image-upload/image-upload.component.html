@@ -1,0 +1,13 @@
+<!--<p-fileUpload name="demo[]"  url="./api/uploader" (onUpload)="onUpload($event)" [customUpload]="true" [multiple]="false" accept="image/*" [maxFileSize]="1000000">-->
+<p-fileUpload name="demo[]" [customUpload]="true" (uploadHandler)="myUploader($event)" [multiple]="false" accept="image/*" [maxFileSize]="1000000">
+<!--    <ng-template pTemplate="content">-->
+<!--        <ul *ngIf="uploadedFiles.length">-->
+<!--            <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>-->
+<!--        </ul>-->
+<!--    </ng-template>-->
+</p-fileUpload>
+
+
+
+<!--<img *ngIf="myresult != ''" [src]="'data:image/jpg;base64,' + myresult" >-->
+

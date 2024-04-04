@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "start+proxy": "ng serve --proxy-config proxy.conf.json ",
+    "start+proxy+fixed-port": "ng serve --proxy-config proxy.conf.json --port 3450",
     "test": "ng test"
   },
   "private": true,
@@ -18,8 +20,14 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "angular-oauth2-oidc": "^17.0.1",
+    "base64-arraybuffer": "^1.0.2",
+    "ngx-file-drag-drop": "^9.0.0",
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "primeng": "^17.12.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.6.2",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
