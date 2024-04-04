@@ -1,0 +1,112 @@
+<div *ngIf="!current$">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="current$">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      {{ (current$ | async)?.teamName }}
+
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Team info">
+
+
+<!--          <mat-card-content>-->
+<!--            <div class="player-details">-->
+<!--              <div class="individual-card">-->
+<!--                <mat-card-subtitle>Name</mat-card-subtitle>-->
+
+<!--                {{ (currentPlayer$ | async)?.firstName }}-->
+<!--                <mat-card-subtitle>Last Name</mat-card-subtitle>-->
+<!--                {{ (currentPlayer$ | async)?.lastName }}-->
+<!--              </div>-->
+<!--              <div class="individual-card">-->
+<!--                <mat-card-subtitle>Player Position</mat-card-subtitle>-->
+<!--                {{ (currentPlayer$ | async)?.basePosition }}-->
+<!--                <mat-card-subtitle>Shirt Number</mat-card-subtitle>-->
+<!--                {{ (currentPlayer$ | async)?.shirtNumber }}-->
+<!--              </div>-->
+<!--          -->
+<!--          -->
+
+          <mat-card-content>
+            <div class="player-details">
+              <div class="individual-card">
+                <img [src]="'data:image/jpg;base64,' + (current$ | async)?.teamLogoImageData">
+              </div>
+              <div class="individual-card">
+                  <mat-card-subtitle>Team Location</mat-card-subtitle>
+                  {{ (current$ | async)?.location }}
+              </div>
+              <div class="individual-card">
+                 <mat-card-subtitle>Trainer Specialty</mat-card-subtitle>
+                  {{ (current$ | async)?.trainer?.trainerSpecialty }}
+                <mat-card-subtitle>Name</mat-card-subtitle>
+                  {{ (current$ | async)?.trainer?.firstName }}
+                <mat-card-subtitle>Last Name</mat-card-subtitle>
+                  {{ (current$ | async)?.trainer?.lastName }}
+                <mat-card-subtitle>Birthday</mat-card-subtitle>
+                  {{ (current$ | async)?.trainer?.birthDate }}
+<!--                <mat-card-subtitle>Age</mat-card-subtitle>-->
+<!--                {{ (current$ | async)?.trainer?.birthDate? | age }}-->
+              </div>
+              <div class="individual-card" (click)="navigateToStadium('stadium')">
+                  <mat-card-subtitle>Stadium</mat-card-subtitle>
+                  {{ (current$ | async)?.stadiumName }}
+              </div>
+            </div>
+
+<!--              <mat-card-content (click)="navigateToStadium()">-->
+<!--                <div class="player-info">-->
+<!--                  {{ keyValuePair.value }}-->
+<!--                </div>-->
+                <!--                  <button mat-button (click)="navigateToPlayer(i)">Select</button>-->
+          </mat-card-content>
+
+
+
+        </mat-tab>
+        <mat-tab label="Players">
+
+<!--          <div *ngIf="(current$ | async)?.playerNames as playerNames">-->
+<!--            <div *ngFor="let keyValuePair of playerNames | keyvalue; let i = index">-->
+<!--              &lt;!&ndash; keyValuePair.key is the player ID, keyValuePair.value is the player name &ndash;&gt;-->
+<!--              <div>-->
+<!--                ID: {{ keyValuePair.key }}, Name: {{ keyValuePair.value }}-->
+<!--                <button (click)="navigateToPlayer(i)">Select</button>-->
+
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div *ngIf="(current$ | async)?.playerNames as playerNames">
+            <div class="card-container">
+              <mat-card class="individual-card" *ngFor="let keyValuePair of playerNames | keyvalue; let i = index">
+<!--           <mat-card class="individual-card" class="player-card" *ngFor="let keyValuePair of playerNames | keyvalue; let i = index">-->
+                <!-- keyValuePair.key is the player ID, keyValuePair.value is the player name -->
+                <mat-card-content (click)="navigateToPlayer(i)">
+                  <div class="player-info">
+                    {{ keyValuePair.value }}
+                  </div>
+<!--                  <button mat-button (click)="navigateToPlayer(i)">Select</button>-->
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+
+<!--          <app-player-detail *ngIf="selectedPlayerKey != ''" [playerKey]=selectedPlayerKey[0]></app-player-detail>-->
+<!--          <app-country *ngIf="selectedPlayerKey != ''" [country]="nationality string valuefrom app=player-detail"></app-country>-->
+
+          <app-player-detail *ngIf="selectedPlayerKey != ''" [playerKey]="selectedPlayerKey[0]"></app-player-detail>
+<!--          <app-country [country]="nationality"></app-country>-->
+
+
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+
+</div>

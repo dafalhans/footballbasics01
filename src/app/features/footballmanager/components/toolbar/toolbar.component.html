@@ -1,0 +1,77 @@
+<mat-toolbar color="primary">
+
+  <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+<!--  <span>Contact Manager</span>-->
+  <span>{{ selectedOption }}</span>
+
+  <span class="example-spacer"></span>
+
+
+
+  <button mat-button [matMenuTriggerFor]="usermenu">
+    <mat-icon>person</mat-icon>
+<!--    <span>bertje</span>-->
+    <span *ngIf="givenName">{{ givenName }} {{ familyName }}</span>
+  </button>
+  <mat-menu #usermenu="matMenu" >
+    <app-login (loginStateChanged)="handleLoginStateChanged()"></app-login>
+
+    <app-profile></app-profile>
+  </mat-menu>
+
+
+
+  <button mat-button [matMenuTriggerFor]="menu" >
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+<!--    <button mat-menu-item (click)="openAddContactDialog()">New Contact</button>-->
+    <button mat-menu-item (click)="toggleTheme.emit()">Toggle theme</button>
+    <button mat-menu-item (click)="toggleDir.emit()">Toggle dir</button>
+  </mat-menu>
+
+
+  <button mat-button [matMenuTriggerFor]="DevOpsMemu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #DevOpsMemu="matMenu">
+    <a mat-menu-item href="http://localhost:9091/swagger-ui/index.html" target="_blank">
+    <button mat-menu-item>
+      <mat-icon fontSet="material-symbols-outlined">open_in_new</mat-icon>
+      <span>Swagger</span>
+    </button>
+    </a>
+    <!--    <button mat-menu-item (click)="openAddContactDialog()">New Contact</button>-->
+    <a mat-menu-item href="http://localhost:9091/explorer/index.html" target="_blank">
+    <button mat-menu-item>
+      <mat-icon fontSet="material-symbols-outlined">health_metrics</mat-icon>
+      <span>HAL Explorer</span>
+    </button>
+    </a>
+    <a mat-menu-item href="http://localhost:9091/actuator" target="_blank">
+    <button mat-menu-item>
+      <mat-icon fontSet="material-symbols-outlined">troubleshoot</mat-icon>
+      <span>Actuator</span>
+    </button>
+    </a>
+  </mat-menu>
+
+
+</mat-toolbar>
+
+
+<div class="wrapper">
+  <!-- Use ngIf to conditionally render the selected component -->
+<!--  <app-player *ngIf="selectedOption === 'Players'"></app-player>-->
+
+
+  <app-team *ngIf="selectedOption === 'Teams'"></app-team>
+<!--  <app-trainer *ngIf="selectedOption === 'Trainers'"></app-trainer>-->
+<!--  <app-player-country *ngIf="selectedOption === 'Players'"></app-player-country>-->
+<!--  <app-team *ngIf="selectedOption === 'Teams'"></app-team>-->
+<!--  <app-trainer *ngIf="selectedOption === 'Trainers'"></app-trainer>-->
+
+</div>

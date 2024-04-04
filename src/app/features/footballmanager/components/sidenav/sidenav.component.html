@@ -1,0 +1,58 @@
+<mat-sidenav-container class="app-sidenav-container"
+                       [class.dark-theme]="isDarkTheme" [dir]=dir>
+
+  <mat-sidenav #sidenav class="app-sidenav mat-elevation-z10"
+                   [opened]="!isScreenSmall"
+                   [mode]="isScreenSmall ? 'over' : 'side'">
+    <mat-toolbar color="primary">
+      <button mat-icon-button [matMenuTriggerFor]="menutool" aria-label="button with menu">
+        <mat-icon>home</mat-icon>
+      </button>
+      <mat-menu #menutool="matMenu">
+        <button mat-menu-item disabled>
+          <mat-icon fontSet="material-symbols-outlined">social_leaderboard</mat-icon>
+          <span>games</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon fontSet="material-symbols-outlined">leaderboard</mat-icon>
+          <span>statistics</span>
+        </button>
+        <button mat-menu-item (click)="selectOption('Teams')">
+          <mat-icon fontSet="material-symbols-outlined">diversity_3</mat-icon>
+          <span>teams</span>
+        </button>
+        <button mat-menu-item (click)="selectOption('Players')">
+          <mat-icon fontSet="material-symbols-outlined">sports_handball</mat-icon>
+          <span>players</span>
+        </button>
+        <button mat-menu-item (click)="selectOption('Trainers')">
+          <mat-icon fontSet="material-symbols-outlined">taunt</mat-icon>
+          <span>trainer</span>
+        </button>
+        <button mat-menu-item (click)="selectOption('admin_section')" disabled>
+          <mat-icon fontSet="material-symbols-outlined">admin_panel_settings</mat-icon>
+          <span>admin section</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <mat-nav-list>
+      <div class="wrapper">
+        <app-sidenavcontentlist [selectedOption]="selectedOption"></app-sidenavcontentlist>
+
+      </div>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="app-sidenav-content">
+    <app-toolbar [selectedOption]="selectedOption" (toggleTheme)="toggleTheme()" (toggleDir)="toggleDir()"></app-toolbar>
+
+
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+
+</mat-sidenav-container>

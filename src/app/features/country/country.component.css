@@ -1,0 +1,23 @@
+.country-container {
+  position: relative;
+}
+
+.flag-container {
+  position: relative;
+  display: inline-block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: none;
+}
+
+.flag-container:hover .overlay {
+  display: block;
+}

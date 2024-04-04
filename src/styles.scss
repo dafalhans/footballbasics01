@@ -1,0 +1,53 @@
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+@import '../node_modules/primeicons/primeicons.css';
+@import '../node_modules/primeng/resources/themes/saga-blue/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeflex/primeflex.css';
+/*@import '@angular/material/prebuilt-themes/indigo-pink.css;*/
+/* You can add global styles to this file, and also import other style files */
+
+//html, body { height: 100%; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$candy-app-primary: mat.define-palette(mat.$indigo-palette);
+$candy-app-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$candy-app-warn:    mat.define-palette(mat.$red-palette);
+
+$candy-app-theme: mat.define-light-theme((
+  color: (
+    primary: $candy-app-primary,
+    accent: $candy-app-accent,
+    warn: $candy-app-warn
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($candy-app-theme);
+
+.dark-theme {
+  $primary-dark: mat.define-palette(mat.$pink-palette, 700);
+  $accent-dark: mat.define-palette(mat.$green-palette);
+  $warn-dark: mat.define-palette(mat.$red-palette);
+
+  $theme-dark: mat.define-dark-theme((
+    color: (
+      primary: $primary-dark,
+      accent: $accent-dark,
+      warn: $warn-dark
+    )
+  ));
+
+  @include mat.all-component-colors($theme-dark);
+}
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

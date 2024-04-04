@@ -1,0 +1,12 @@
+
+<mat-nav-list>
+
+
+  <div *ngIf="selectedOption === 'Teams'">
+  <mat-list-item *ngFor="let myobject of all$ | async" (click)="selectTeam(myobject)" [routerLink]="['/footballmanager/teams',myobject.id]" > {{ myobject.teamName }}</mat-list-item>
+<!--        <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>-->
+
+  <app-team-sidebar-details *ngIf="selectedOption === 'Teams' && selectedTeam" [selectedTeam]="selectedTeam" ></app-team-sidebar-details>
+  </div>
+
+</mat-nav-list>

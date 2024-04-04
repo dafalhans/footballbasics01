@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+  <mat-card-header>
+<!--    <div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>{{ selectedTeam?.teamName }}</mat-card-title>
+  </mat-card-header>
+  <img class="avatar" [src]="'data:image/jpg;base64,' + selectedTeam?.teamLogoImageData">
+  <mat-card-content>
+    <mat-card-subtitle>Stadium</mat-card-subtitle>
+    <p>{{ selectedTeam?.stadiumName }}</p>
+    <mat-card-subtitle>Trainer</mat-card-subtitle>
+    <p>{{ selectedTeam?.trainer?.firstName }} {{ selectedTeam?.trainer?.lastName }}</p>
+<!--    <p>-->
+<!--      some text about this team-->
+<!--    </p>-->
+  </mat-card-content>
+  <mat-card-actions>
+<!--    <button mat-button>LIKE</button>-->
+<!--    <button mat-button>SHARE</button>-->
+<!--    {{ this.selectedTeam?.teamName }}-->
+<!--    {{ this.selectedTeam?.stadiumName }}-->
+  </mat-card-actions>
+</mat-card>
+

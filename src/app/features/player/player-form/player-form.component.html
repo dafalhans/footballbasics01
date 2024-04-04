@@ -1,0 +1,73 @@
+<p-card>
+  <form [formGroup]="playerForm">
+
+    <div class="p-fluid">
+      <label>Id</label>
+      <input pInputText [formControlName]="playerFields.Id">
+    </div>
+
+    <div class="p-fluid">
+      <label>Name</label>
+      <input pInputText [formControlName]="playerFields.Name">
+    </div>
+
+    <div class="p-fluid">
+      <label>FirstName</label>
+      <input pInputText [formControlName]="playerFields.FirstName">
+    </div>
+
+    <div class="p-fluid">
+      <label>LastName</label>
+      <input pInputText [formControlName]="playerFields.LastName">
+    </div>
+
+<!--    <div class="p-fluid">-->
+<!--      <label>Birthdate</label>-->
+<!--      <input pInputText [formControlName]="playerFields.Birthdate">-->
+<!--    </div>-->
+
+    <div class="p-fluid">
+      <label>Birthdate</label>
+<!--      <p-calendar [formControlName]="playerFields.Birthdate" [defaultDate]="getPlayerBirthdate()" [showIcon]="true" [dateFormat]="calendarDateFormat"></p-calendar>-->
+      <p-calendar [formControlName]="playerFields.Birthdate" [showIcon]="true" [dateFormat]="calendarDateFormat"></p-calendar>
+    </div>
+
+<!--    <div class="p-fluid">-->
+<!--      <label>BasePosition</label>-->
+<!--      <input pInputText [formControlName]="playerFields.BasePosition">-->
+<!--    </div>-->
+
+    <div class="p-fluid">
+      <label>Base Position</label>
+      <p-dropdown [options]="basePositions$.value" [formControlName]="playerFields.BasePosition" [showClear]="true" [filter]="true" placeholder="Select Base Position"></p-dropdown>
+    </div>
+
+    <div class="p-fluid">
+      <label>ShirtNumber</label>
+      <input pInputText [formControlName]="playerFields.ShirtNumber">
+    </div>
+
+
+    <div class="p-fluid">
+      <label>Height</label>
+      <input pInputText [formControlName]="playerFields.Height">
+    </div>
+
+
+    <div class="p-fluid">
+      <label>Weight</label>
+      <input pInputText [formControlName]="playerFields.Weight">
+    </div>
+
+    <div class="mt-3 flex justify-content-end">
+      <p-button [disabled]="playerForm.invalid"
+                pRipple
+                (click)="save()"
+                type="submit">{{ this.config.data ? 'Update' : 'Save' }}
+      </p-button>
+    </div>
+
+
+  </form>
+</p-card>
+{{ playerForm.value | json }}

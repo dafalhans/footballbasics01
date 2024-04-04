@@ -1,0 +1,49 @@
+<p-card>
+  <form [formGroup]="trainerForm">
+
+    <div class="p-fluid">
+      <label>Id</label>
+      <input pInputText [formControlName]="trainerFields.Id">
+    </div>
+
+    <div class="p-fluid">
+      <label>Name</label>
+      <input pInputText [formControlName]="trainerFields.Name">
+    </div>
+
+    <div class="p-fluid">
+      <label>FirstName</label>
+      <input pInputText [formControlName]="trainerFields.FirstName">
+    </div>
+
+    <div class="p-fluid">
+      <label>LastName</label>
+      <input pInputText [formControlName]="trainerFields.LastName">
+    </div>
+
+
+    <div class="p-fluid">
+      <label>Birthdate</label>
+      <!--      <p-calendar [formControlName]="playerFields.Birthdate" [defaultDate]="getPlayerBirthdate()" [showIcon]="true" [dateFormat]="calendarDateFormat"></p-calendar>-->
+      <p-calendar [formControlName]="trainerFields.Birthdate" [showIcon]="true" [dateFormat]="calendarDateFormat"></p-calendar>
+    </div>
+
+
+
+    <div class="p-fluid">
+      <label>Base Position</label>
+      <p-dropdown [options]="trainerSpecialties$.value" [formControlName]="trainerFields.TrainerSpecialty" [showClear]="true" [filter]="true" placeholder="Select Base Position"></p-dropdown>
+    </div>
+
+    <div class="mt-3 flex justify-content-end">
+      <p-button [disabled]="trainerForm.invalid"
+                pRipple
+                (click)="save()"
+                type="submit">{{ this.config.data ? 'Update' : 'Save' }}
+      </p-button>
+    </div>
+
+
+  </form>
+</p-card>
+{{ trainerForm.value | json }}

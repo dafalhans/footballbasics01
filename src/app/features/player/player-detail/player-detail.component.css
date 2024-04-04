@@ -1,0 +1,22 @@
+.player-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.player-details > div {
+  border: 1px solid #ccc; /* Add borders to the grid cells */
+  padding: 10px; /* Add padding for spacing */
+}
+
+
+.mat-card {
+  background-color: var(--mat-toolbar-container-background-color);
+}
+
+
+.individual-card{
+  background-color: var(--mdc-slider-handle-color);
+  color: var(--primary-color-text);
+
+}

@@ -1,0 +1,15 @@
+<div class="country-container" (click)="showDialog()">
+  {{ (showCountry?.fullName) }}
+</div>
+<!--  <p-dialog header="{{ (showCountry?.fullName) }}" position="bottomright" [visible]="visible" (visibleChange)="blah()" [style]="{ width: '50vw' }">-->
+    <p-dialog header="{{ (showCountry?.fullName) }}" [visible]="visible" (visibleChange)="blah()" [style]="{ width: '50' }">
+    <ng-template pTemplate="content">
+      <div>
+        <p>Phone Prefix: {{ (showCountry?.phonePrefix) }}</p>
+        <p>Currency: {{ (showCountry?.currency) }}</p>
+        <p>Capital: {{ (showCountry?.capital) }}</p>
+        <img [src]="'data:image/jpg;base64,' + showCountry?.flagB64">
+      </div>
+    </ng-template>
+  </p-dialog>
+

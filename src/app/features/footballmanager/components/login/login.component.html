@@ -1,0 +1,19 @@
+<button mat-menu-item *ngIf="!isLoggedIn" (click)="twostapsLogin()">
+  <mat-icon fontSet="material-symbols-outlined">login</mat-icon>
+  <span>Login</span>
+</button>
+
+<button mat-menu-item *ngIf="isLoggedIn" (click)="twostapsLogout()">
+  <mat-icon fontSet="material-symbols-outlined">logout</mat-icon>
+  <span>Logout</span>
+</button>
+
+<!--<button mat-menu-item (click)="initializeOAuth()">-->
+<!--  <mat-icon fontSet="material-symbols-outlined">login</mat-icon>-->
+<!--  <span>Login</span>-->
+<!--</button>-->
+
+<!--<button mat-menu-item (click)="logout()">-->
+<!--  <mat-icon fontSet="material-symbols-outlined">logout</mat-icon>-->
+<!--  <span>Logout</span>-->
+<!--</button>-->

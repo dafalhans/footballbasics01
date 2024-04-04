@@ -1,0 +1,81 @@
+
+<div *ngIf="!currentPlayer$">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="currentPlayer$">
+  <mat-card appearance="outlined" class="mat-card">
+    <mat-card-header>
+<!--      <mat-icon mat-card-avatar svgIcon="{{currentTeam.teamLogoImageData}}"></mat-icon>-->
+      <mat-card-title>{{ (currentPlayer$ | async)?.name }}</mat-card-title>
+      <mat-card-subtitle>
+        Creation Date {{ (currentPlayer$ | async)?.creationDate | date: 'd LLLL'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+<!--    <mat-card-content>-->
+
+<!--      <div>-->
+<!--        {{ (currentPlayer$ | async)?.firstName }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--            {{ (currentPlayer$ | async)?.lastName }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        {{ (currentPlayer$ | async)?.basePosition }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        {{ (currentPlayer$ | async)?.height }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        {{ (currentPlayer$ | async)?.weight }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        {{ (currentPlayer$ | async)?.shirtNumber }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        {{ (currentPlayer$ | async)?.nationality }}-->
+<!--      </div>-->
+<!--      <div>-->
+<!--            <img [src]="'data:image/jpg;base64,' + (currentPlayer$ | async)?.playerImageData">-->
+<!--      </div>-->
+<!--    </mat-card-content>-->
+    <mat-card-content>
+      <div class="player-details">
+        <div class="individual-card">
+          <mat-card-subtitle>Name</mat-card-subtitle>
+
+          {{ (currentPlayer$ | async)?.firstName }}
+          <mat-card-subtitle>Last Name</mat-card-subtitle>
+          {{ (currentPlayer$ | async)?.lastName }}
+        </div>
+        <div class="individual-card">
+          <mat-card-subtitle>Player Position</mat-card-subtitle>
+          {{ (currentPlayer$ | async)?.basePosition }}
+            <mat-card-subtitle>Shirt Number</mat-card-subtitle>
+          {{ (currentPlayer$ | async)?.shirtNumber }}
+        </div>
+        <div class="individual-card">
+          <mat-card-subtitle>Height</mat-card-subtitle>
+          {{ (currentPlayer$ | async)?.height }}
+            <mat-card-subtitle>Weight</mat-card-subtitle>
+          {{ (currentPlayer$ | async)?.weight }}
+        </div>
+        <div class="individual-card">
+          <mat-card-subtitle>Nationality</mat-card-subtitle>
+          {{ (currentPlayer$ | async)?.nationality }}
+
+<!--          <div *ngIf="!currentPlayer$">-->
+<!--            <mat-spinner></mat-spinner>-->
+<!--          </div>-->
+<!--          <div *ngIf="(currentPlayer$ | async)?.nationality as nationality">-->
+          <app-country *ngIf="(currentPlayer$ | async)?.nationality as selectedCountry" [country]="selectedCountry"></app-country>
+
+<!--          <app-country *ngIf="(currentPlayer$ | async)?.nationality" [country]="(currentPlayer$ | async)?.nationality"></app-country>-->
+<!--          </div>-->
+        </div>
+        <div class="individual-card">
+          <img [src]="'data:image/jpg;base64,' + (currentPlayer$ | async)?.playerImageData">
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

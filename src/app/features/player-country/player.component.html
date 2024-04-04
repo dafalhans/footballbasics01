@@ -1,0 +1,81 @@
+<p-toast></p-toast>
+<p-confirmDialog #cd>
+  <ng-template pTemplate="headless" let-message>
+    <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+      <div class="border-circle bg-primary inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8">
+        <i class="pi pi-question text-5xl"></i>
+      </div>
+      <span class="font-bold text-2xl block mb-2 mt-4">{{ message.header }}</span>
+      <p class="mb-0">{{ message.message }}</p>
+      <div class="flex align-items-center gap-2 mt-4">
+        <button pButton label="Delete" (click)="cd.accept()" class="w-8rem"></button>
+        <button pButton label="Cancel" (click)="cd.reject()" class="p-button-outlined w-8rem "></button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog>
+<div class="card">
+  <p-table [columns]="cols"
+           [value]="all$.getValue()"
+           [styleClass]="'p-datatable-striped'">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
+        <th class="w-88"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+
+        <!--        <td *ngFor="let col of columns" [style.font-size.px]="getRowFontSize()">-->
+        <td *ngFor="let col of columns">
+
+
+          <ng-container *ngIf="col.type === CellType.DATE">
+            {{ rowData[col.field] | date:'dd/MM/yyyy HH:mm:ss' }}
+          </ng-container>
+
+
+
+          <ng-container *ngIf="col.type === CellType.IMAGE">
+            <div class="image-container" (mouseenter)="showFullSizeImage=true" (mouseleave)="showFullSizeImage=false">
+              <img class="avatar" [src]="'data:image/jpg;base64,' + rowData[col.field]" [style.width.px]="imageWidth" [style.height.px]="imageHeight">
+<!--              <div class="overlay" *ngIf="showFullSizeImage">{{ rowData[col.field] }}</div>-->
+              <div class="overlay" *ngIf="showFullSizeImage" [style.backgroundImage]="'url(data:image/jpg;base64,' + rowData[col.field] + ')'"></div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="col.type === CellType.COMPONENT">
+<!--            {{ rowData[col.field] }}-->
+            <app-country [country]="rowData[col.field]"></app-country>
+          </ng-container>
+
+
+
+          <ng-container *ngIf="col.type !== CellType.DATE && col.type !== CellType.IMAGE && col.type != CellType.COMPONENT">
+            {{ rowData[col.field] }}
+          </ng-container>
+        </td>
+
+
+
+
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td [attr.colspan]="columns?.length">
+          {{ 'No data' }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

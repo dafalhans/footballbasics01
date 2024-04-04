@@ -1,0 +1,22 @@
+<!--<button mat-menu-item (click)="toggleUserProfileVisibility()">-->
+<!--  <mat-icon fontSet="material-symbols-outlined">info</mat-icon>-->
+<!--  <span>User Info</span>-->
+<!--</button>-->
+
+<button mat-menu-item (click)="logoutAndRevoke()">
+  <mat-icon fontSet="material-symbols-outlined">heart_minus</mat-icon>
+  <span>Logout and revoke Grant</span>
+</button>
+
+<button mat-menu-item (click)="toggleUserProfileVisibility()">
+<!--<button mat-menu-item>-->
+  <mat-icon fontSet="material-symbols-outlined">info</mat-icon>
+  <span>User Info</span>
+</button>
+
+<div *ngIf="isUserProfileVisible && userProfile">
+<!--  <div *ngIf="userProfile">-->
+  <b>user profile:</b>
+  <pre>{{ userProfile | json }}</pre>
+</div>
+

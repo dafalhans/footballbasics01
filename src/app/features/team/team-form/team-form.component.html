@@ -1,0 +1,59 @@
+<p-card>
+  <form [formGroup]="teamForm">
+
+    <div class="p-fluid">
+      <label>Id</label>
+      <input pInputText [formControlName]="teamFields.Id">
+    </div>
+
+    <div class="p-fluid">
+      <label>Name</label>
+      <input pInputText [formControlName]="teamFields.Name">
+    </div>
+
+    <div class="p-fluid">
+      <label>Location</label>
+      <input pInputText [formControlName]="teamFields.Location">
+    </div>
+
+    <div class="p-fluid">
+      <label>Team Name</label>
+      <input pInputText [formControlName]="teamFields.TeamName">
+    </div>
+
+    <div class="p-fluid">
+      <label>Stadium</label>
+      <input pInputText [formControlName]="teamFields.Stadium">
+    </div>
+
+<!--    <div class="p-fluid">-->
+<!--      <label>TeamLogo</label>-->
+<!--      <input pInputText [formControlName]="teamFields.TeamLogo">-->
+<!--    </div>-->
+
+    <div class="p-fluid">
+      <label>Picture</label>
+      <div class="image-upload-container">
+        <div class="image-container">
+          <img class="avatar" [src]="'data:image/jpg;base64,' + teamForm.getRawValue().teamLogoImageData">
+        </div>
+        <div class="file-upload-container">
+          <label>Replace Picture</label>
+          <!--            <app-image-upload></app-image-upload>-->
+          <app-image-upload (imageChanged)="onImageChanged($event)"></app-image-upload>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3 flex justify-content-end">
+      <p-button [disabled]="teamForm.invalid"
+                pRipple
+                (click)="save()"
+                type="submit">{{ this.config.data ? 'Update' : 'Save' }}
+      </p-button>
+    </div>
+
+
+  </form>
+</p-card>
+{{ teamForm.value | json }}
